@@ -26,7 +26,7 @@ chat_service = ChatService()
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with specific origins
+    allow_origins=["*"],  # In production, replace with your frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -98,4 +98,7 @@ async def chat(message: str = Body(...), language: str = Body("en")):
         )
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True) 
+    # Get port from environment variable or use default
+    port = int(os.getenv("PORT", 8000))
+    # Run the server
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True) 
