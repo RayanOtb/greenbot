@@ -1,9 +1,9 @@
 [build]
 builder = "nixpacks"
-buildCommand = "/usr/local/bin/python3 -m pip install --upgrade pip && cd backend && /usr/local/bin/python3 -m pip install -r requirements.txt"
+buildCommand = "pip install -r backend/requirements.txt"
 
 [deploy]
-startCommand = "cd backend && /usr/local/bin/python3 main.py"
+startCommand = "cd backend && python main.py"
 healthcheckPath = "/"
 healthcheckTimeout = 100
 restartPolicyType = "on_failure"
